@@ -1,4 +1,4 @@
-import {Dialog, getActiveEditor, Plugin, showMessage} from "siyuan";
+import {Dialog, getActiveEditor, getFrontend, Plugin, showMessage} from "siyuan";
 import type {ICommand} from "siyuan";
 import {removeFile} from "./api";
 import {defaultSiteRoot, exportShare, type ShareRecord} from "./export";
@@ -29,13 +29,60 @@ const DEFAULT_SETTINGS: PluginSettings = {
 export default class OnlineSharePlugin extends Plugin {
     private settings: PluginSettings = {...DEFAULT_SETTINGS};
     private shares: ShareRecord[] = [];
+    private unsupportedFrontend = false;
+    private initialized = false;
 
     /**
-     * 插件加载：读取本地设置，注册 SVG 图标、顶栏按钮和命令。
-     * 这里只做轻量初始化，耗时的导出在用户点击后进行。
+     * 插件加载。
+     *
+     * 注意两点：
+     * 1. 本插件只支持桌面/桌面浏览器；安卓/ iOS 等移动端直接返回，绝不注册
+     *    顶栏或命令，避免不支持的 API 让移动端启动卡住。
+     * 2. 不在这里 await 私有存储。`loadData` 在异常/移动端环境可能长时间
+     *    不 resolve，而思源会等待 onload，导致“启动超时”。改为后台初始化，
+     *    并给存储读取加超时。
      */
     async onload(): Promise<void> {
-        await this.loadSettings();
+        if (this.isUnsupportedFrontend()) {
+            this.unsupportedFrontend = true;
+            console.info("[online-share] mobile frontend is not supported; plugin is idle");
+            return;
+        }
+        void this.initialize();
+    }
+
+    private isUnsupportedFrontend(): boolean {
+        let frontend = "";
+        try {
+            frontend = getFrontend();
+        } catch {
+            // SDK 在极早期可能还没准备好，继续用 container/UA 判断。
+        }
+        if (frontend === "mobile" || frontend === "browser-mobile") {
+            return true;
+        }
+        const container = window.siyuan?.config?.system?.container || "";
+        if (["android", "ios", "harmony"].includes(container)) {
+            return true;
+        }
+        return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "");
+    }
+
+    /**
+     * 真正的桌面初始化。
+     *
+     * 存储读取最多等 2 秒；即使存储异常，也会继续注册 UI，
+     * 不能让插件初始化阻塞思源主界面。
+     */
+    private async initialize(): Promise<void> {
+        if (this.initialized) {
+            return;
+        }
+        this.initialized = true;
+        await Promise.race([
+            this.loadSettings(),
+            new Promise<void>((resolve) => window.setTimeout(resolve, 2000))
+        ]);
         this.addIcons(`<symbol id="iconOnlineShare" viewBox="0 0 24 24">
     <circle cx="18" cy="5" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/>
     <circle cx="6" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/>
@@ -59,6 +106,9 @@ export default class OnlineSharePlugin extends Plugin {
 
     /** 卸载时移除顶栏按钮，避免插件禁用后留下孤儿按钮。 */
     onunload(): void {
+        if (this.unsupportedFrontend || !this.initialized) {
+            return;
+        }
         this.removeTopBar("online-share-topbar");
     }
 

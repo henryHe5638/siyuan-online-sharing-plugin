@@ -37,7 +37,7 @@
   "shareId": "cF-1XCL6cWlzEfqdHjH9JA",
   "encrypted": false,
   "manifest": "manifest.json",
-  "viewerVersion": "1.0.0"
+  "viewerVersion": "1.0.1"
 }
 ```
 
@@ -49,7 +49,7 @@
   "shareId": "cF-1XCL6cWlzEfqdHjH9JA",
   "encrypted": true,
   "manifest": "manifest.enc",
-  "viewerVersion": "1.0.0",
+  "viewerVersion": "1.0.1",
   "kdf": {
     "name": "PBKDF2",
     "hash": "SHA-256",

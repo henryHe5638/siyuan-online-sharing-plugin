@@ -73,7 +73,7 @@ icon.png
 **界面安装（推荐给最终用户）**
 
 1. 打开 设置 → 集市 → 已下载 → 插件；
-2. 点击「从本地安装 / 导入插件包」，选择 `siyuan-online-share-1.0.0.zip`；
+2. 点击「从本地安装 / 导入插件包」，选择 `siyuan-online-share-1.0.1.zip`；
 3. 启用「在线分享」。
 
 **手动解压（开发/备用）**
@@ -89,7 +89,7 @@ unzip plugin/package.zip -d "{workspace}/data/plugins/siyuan-online-share"
 2. 设置 → 集市 → 已下载 → 插件 → 启用「在线分享」；
 3. 打开文档 → 顶栏分享图标。
 
-`plugin/package.zip` 是开发构建产物；Release 附件会重命名为 `siyuan-online-share-1.0.0.zip`。
+`plugin/package.zip` 是开发构建产物；Release 附件会重命名为 `siyuan-online-share-1.0.1.zip`。
 
 ## 5. 手动验收清单
 

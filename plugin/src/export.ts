@@ -36,7 +36,7 @@ import {VIEWER_HTML} from "./generated/viewer-html";
  * 之所以先写临时目录再切换，是为了避免导出失败时旧分享已被删除、
  * 原链接直接 404。
  */
-export const SHARE_VIEWER_VERSION = "1.0.0";
+export const SHARE_VIEWER_VERSION = "1.0.1";
 
 /** 插件本地保存的一条分享管理记录。 */
 export interface ShareRecord {

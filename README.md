@@ -18,7 +18,7 @@
 
 **当前不包含**：评论、全文搜索、到期时间、访问统计、跨设备实时同步。
 
-当前版本：**v1.0.0**
+当前版本：**v1.0.1**
 
 ## 架构
 
@@ -87,8 +87,8 @@ plugin/package.zip
 
 从 GitHub Releases 下载：
 
-- [v1.0.0 Release](https://github.com/henryHe5638/siyuan-online-sharing-plugin/releases/tag/v1.0.0)
-- 附件：`siyuan-online-share-1.0.0.zip`
+- [v1.0.1 Release](https://github.com/henryHe5638/siyuan-online-sharing-plugin/releases/tag/v1.0.1)
+- 附件：`siyuan-online-share-1.0.1.zip`
 
 ### 方式一：思源界面直接上传安装（推荐）
 
@@ -97,7 +97,7 @@ plugin/package.zip
 1. 设置 → 集市 → 确认信任集市；
 2. 设置 → 集市 → 已下载 → 插件；
 3. 点击「从本地安装 / 导入插件包」（不同小版本的按钮文案可能略有差异）；
-4. 选择下载好的 `siyuan-online-share-1.0.0.zip`；
+4. 选择下载好的 `siyuan-online-share-1.0.1.zip`；
 5. 启用「在线分享」；
 6. 打开文档，点击顶栏的分享图标。
 
@@ -107,7 +107,7 @@ plugin/package.zip
 
 ```bash
 mkdir -p "{工作空间}/data/plugins/siyuan-online-share"
-unzip siyuan-online-share-1.0.0.zip -d "{工作空间}/data/plugins/siyuan-online-share"
+unzip siyuan-online-share-1.0.1.zip -d "{工作空间}/data/plugins/siyuan-online-share"
 ```
 
 然后重启思源，在插件面板启用「在线分享」。
