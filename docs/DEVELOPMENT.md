@@ -211,3 +211,21 @@ location / {
 - 导出过程的全局设置修改必须放在 `try/finally` 中恢复；
 - 新增 Protyle 渲染器时，在 `viewer/src/render.ts` 中用 `callProtyle()` 调用，保证缺失时降级；
 - 新增内部链接形态时，在 `viewer/src/links.ts` 中集中处理。
+
+### 7.7 安卓端启动超时
+
+v1.0.0 在 Android 上可能因为插件 `onload` 等待私有存储而触发启动超时。v1.0.1 已：
+
+- 在 `plugin.json` 中把 `backends` 限制为桌面/Docker，`frontends` 限制为桌面/桌面浏览器；
+- 在 `onload` 里增加移动端守卫，移动端直接返回；
+- 不再 await 私有存储，并给存储读取加 2 秒超时。
+
+如果 Android 端已经被旧版本卡住无法进入界面，需要在 Android 工作空间中删除：
+
+```text
+{workspace}/data/plugins/siyuan-online-share/
+```
+
+或从 `data/storage/petal/petals.json` 中移除该插件条目，然后重启 SiYuan。操作前请先备份工作空间。
+
+插件本身只支持桌面/Docker 端导出；分享页仍可在手机浏览器中正常阅读。
