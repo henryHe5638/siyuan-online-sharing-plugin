@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "shareId": "sample-share-0001",
+  "title": "思源分享示例",
+  "rootId": "20261028000000-root01",
+  "createdAt": "2026-10-28T00:00:00Z",
+  "updatedAt": "2026-10-28T00:00:00Z",
+  "theme": {
+    "light": "daylight",
+    "dark": "midnight",
+    "defaultMode": "light"
+  },
+  "docs": [
+    {
+      "id": "20261028000000-root01",
+      "title": "示例分享：分栏、颜色与代码",
+      "file": "docs/root.html",
+      "parentId": null,
+      "order": 0,
+      "children": [
+        "20261028000001-child1",
+        "20261028000002-child2"
+      ]
+    },
+    {
+      "id": "20261028000001-child1",
+      "title": "子文档：代码块与链接",
+      "file": "docs/child1.html",
+      "parentId": "20261028000000-root01",
+      "order": 0,
+      "children": []
+    },
+    {
+      "id": "20261028000002-child2",
+      "title": "子文档：图片与外部链接",
+      "file": "docs/child2.html",
+      "parentId": "20261028000000-root01",
+      "order": 1,
+      "children": []
+    }
+  ],
+  "blocks": {
+    "20261028000001-child1": "20261028000001-child1",
+    "20261028000002-child2": "20261028000002-child2",
+    "20261028000003-head01": "20261028000001-child1"
+  }
+}

@@ -1,0 +1,99 @@
+/*
+ * 插件对话框样式。
+ * 全部使用 share-plugin- 前缀，避免和思源自带样式冲突；
+ * 颜色/圆角优先复用思源的 CSS 变量，跟随亮暗主题。
+ */
+.share-plugin-dialog {
+    padding: 8px 0;
+}
+
+.share-plugin-field {
+    display: block;
+    margin-bottom: 14px;
+}
+
+.share-plugin-label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--b3-theme-on-surface);
+    font-size: 12px;
+}
+
+.share-plugin-hint {
+    display: block;
+    margin-top: 6px;
+    color: var(--b3-theme-on-surface);
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+.share-plugin-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    font-size: 13px;
+}
+
+.share-plugin-status {
+    min-height: 20px;
+    color: var(--b3-theme-on-surface);
+    font-size: 12px;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.share-plugin-status--error {
+    color: var(--b3-theme-error);
+}
+
+.share-plugin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 60vh;
+    overflow: auto;
+}
+
+.share-plugin-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border: 1px solid var(--b3-border-color);
+    border-radius: 6px;
+}
+
+.share-plugin-row__info {
+    flex: 1;
+    min-width: 0;
+}
+
+.share-plugin-row__title {
+    overflow: hidden;
+    font-size: 13px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.share-plugin-row__meta {
+    margin-top: 4px;
+    color: var(--b3-theme-on-surface);
+    font-size: 12px;
+}
+
+.share-plugin-row__actions {
+    display: flex;
+    flex-shrink: 0;
+    gap: 6px;
+}
+
+.share-plugin-success {
+    margin-bottom: 12px;
+    color: var(--b3-theme-on-surface);
+    font-size: 12px;
+    line-height: 1.55;
+    word-break: break-all;
+}

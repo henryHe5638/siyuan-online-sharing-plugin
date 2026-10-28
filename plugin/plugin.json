@@ -1,0 +1,20 @@
+{
+  "name": "siyuan-online-share",
+  "author": "siyuan-online-share",
+  "url": "https://github.com/your-name/siyuan-online-share",
+  "version": "1.0.0",
+  "minAppVersion": "3.8.4",
+  "backends": ["all"],
+  "frontends": ["desktop", "browser-desktop"],
+  "disabledInPublish": true,
+  "icon": "icon.png",
+  "displayName": {
+    "default": "Online Share",
+    "zh_CN": "在线分享"
+  },
+  "description": {
+    "default": "Export notes as a self-contained, password-protected static share site.",
+    "zh_CN": "把文档导出为自包含、可密码保护的静态分享站。"
+  },
+  "keywords": ["share", "export", "static", "分享"]
+}
