@@ -18,6 +18,8 @@
 
 **当前不包含**：评论、全文搜索、到期时间、访问统计、跨设备实时同步。
 
+当前版本：**v1.0.0**
+
 ## 架构
 
 ```text
@@ -81,21 +83,40 @@ plugin/package.zip
 3. 构建插件；
 4. 生成 `package.zip`（含 `plugin.json`、`index.js`、`index.css`、`icon.png`）。
 
-## 安装到思源
+## 下载与安装
 
-把 `package.zip` 解压到：
+从 GitHub Releases 下载：
+
+- [v1.0.0 Release](https://github.com/henryHe5638/siyuan-online-sharing-plugin/releases/tag/v1.0.0)
+- 附件：`siyuan-online-share-1.0.0.zip`
+
+### 方式一：思源界面直接上传安装（推荐）
+
+思源 3.8+ 支持从本地 zip 安装插件：
+
+1. 设置 → 集市 → 确认信任集市；
+2. 设置 → 集市 → 已下载 → 插件；
+3. 点击「从本地安装 / 导入插件包」（不同小版本的按钮文案可能略有差异）；
+4. 选择下载好的 `siyuan-online-share-1.0.0.zip`；
+5. 启用「在线分享」；
+6. 打开文档，点击顶栏的分享图标。
+
+### 方式二：手动解压（备用）
+
+如果当前版本没有“从本地安装”入口：
 
 ```bash
 mkdir -p "{工作空间}/data/plugins/siyuan-online-share"
-unzip plugin/package.zip -d "{工作空间}/data/plugins/siyuan-online-share"
+unzip siyuan-online-share-1.0.0.zip -d "{工作空间}/data/plugins/siyuan-online-share"
 ```
 
-然后：
+然后重启思源，在插件面板启用「在线分享」。
 
-1. 设置 → 集市 → 确认信任集市；
-2. 设置 → 集市 → 已下载 → 插件 → 启用「在线分享」；
-3. 打开文档，点击顶栏的分享图标；
-4. 填写分享站点根地址、是否递归、是否启用密码，点击“开始分享”。
+安装后：
+
+1. 打开文档，点击顶栏分享图标；
+2. 填写分享站点根地址、是否递归、是否启用密码；
+3. 点击“开始分享”。
 
 ## 分享目录怎么对外
 
@@ -171,6 +192,17 @@ pnpm dev:viewer
 - 更新分享需要手动触发，不会自动同步文档修改；
 - 每个文档导出都会复制一次 `stage/`，大文档树会慢、占空间；
 - 不支持按链接到期/统计/多用户协作。
+
+## 关于开发方式
+
+本项目采用 **vibe coding** 方式开发：需求、交互和验收由作者主导，大量实现、注释和文档由 AI 编程助手生成，并通过 TypeScript 类型检查、插件构建和真实思源内核导出验证。
+
+欢迎二次开发：
+
+- `viewer/`、`plugin/`、`shared/` 已解耦，分享目录格式见 [docs/SHARE-FORMAT.md](docs/SHARE-FORMAT.md)；
+- 构建、调试、部署见 [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)；
+- 欢迎提交 Issue / PR，或基于现有结构做自己的分享样式、渲染器和存储方案；
+- 二次开发时请保留项目来源说明，并遵循思源及其主题/字体资源的许可。
 
 ## License
 
