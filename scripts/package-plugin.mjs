@@ -16,6 +16,8 @@ const dist = path.join(plugin, "dist");
 
 await copyFile(path.join(plugin, "plugin.json"), path.join(dist, "plugin.json"));
 await copyFile(path.join(plugin, "index.css"), path.join(dist, "index.css"));
+// 思源插件详情页默认读取包内的 README.md。
+await copyFile(path.join(plugin, "README.md"), path.join(dist, "README.md"));
 try {
     await copyFile(path.join(plugin, "icon.png"), path.join(dist, "icon.png"));
 } catch {
